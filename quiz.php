@@ -1,37 +1,10 @@
 <?php
 require "AjouterQuestionHandler.php";
-/**
- * Classe Question
- * Représente une question dans un quiz avec son texte, type, choix possibles, réponse attendue et score.
- */
-class Question {
-    public $uuid;
-    public $type;
-    public $label;
-    public $choices;
-    public $correct;
-    public $score;
-
-    /**
-     * Constructeur de la classe Question.
-     *
-     * @param string $uuid    Identifiant unique de la question.
-     * @param string $type    Type de la question (text, radio, checkbox).
-     * @param string $label   Texte de la question.
-     * @param array  $choices Choix possibles (pour les questions de type radio ou checkbox).
-     * @param mixed  $correct Réponse attendue.
-     * @param int    $score   Score de la question.
-     */
-    public function __construct($uuid, $type, $label, $choices, $correct, $score) {
-        $this->uuid = $uuid;
-        $this->type = $type;
-        $this->label = $label;
-        $this->choices = $choices;
-        $this->correct = $correct;
-        $this->score = $score;
-    }
-}
-
+require "./_inc/data/Question.php";
+require "./_inc/data/QuestionHandler.php";
+require "./_inc/data/TextQuestionHandler.php";
+require "./_inc/data/RadioQuestionHandler.php";
+require "./_inc/data/CheckboxQuestionHandler.php";
 
 /**
  * Classe Quiz
@@ -121,100 +94,6 @@ class Quiz {
 
         if ($message) {
             echo "<p>$message</p>";
-        }
-    }
-}
-
-/**
- * Classe abstraite QuestionHandler
- * Définit le comportement attendu d'un gestionnaire de question.
- */
-abstract class QuestionHandler {
-    /**
-     * Affiche la question dans le formulaire.
-     *
-     * @param Question $question Question à afficher.
-     */
-    abstract public function display(Question $question);
-
-    /**
-     * Évalue la réponse soumise et met à jour le score.
-     *
-     * @param Question $question    Question à évaluer.
-     * @param mixed    $postData    Réponse soumise dans le formulaire.
-     * @param int      $scoreTotal   Score total.
-     * @param int      $scoreCorrect Score correct.
-     */
-    abstract public function evaluate(Question $question, $postData, &$scoreTotal, &$scoreCorrect);
-}
-
-/**
- * Classe TextQuestionHandler
- * Gestionnaire de question pour les questions de type texte.
- */
-class TextQuestionHandler extends QuestionHandler {
-    public function display(Question $question) {
-        echo $question->label . "<br><input type='text' name='" . $question->uuid . "'><br>";
-    }
-
-    public function evaluate(Question $question, $postData, &$scoreTotal, &$scoreCorrect) {
-        $scoreTotal += $question->score;
-        if (!is_null($postData) && $question->correct == $postData) {
-            $scoreCorrect += $question->score;
-        }
-    }
-}
-
-/**
- * Classe RadioQuestionHandler
- * Gestionnaire de question pour les questions de type radio.
- */
-class RadioQuestionHandler extends QuestionHandler {
-    public function display(Question $question) {
-        echo $question->label . "<br>";
-        $i = 0;
-        foreach ($question->choices as $choice) {
-            $i += 1;
-            echo "<input type='radio' name='" . $question->uuid . "' value='" . $choice . "' id='" . $question->uuid . "-$i'>";
-            echo "<label for='" . $question->uuid . "-$i'>" . $choice . "</label>";
-        }
-    }
-
-    public function evaluate(Question $question, $postData, &$scoreTotal, &$scoreCorrect) {
-        $scoreTotal += $question->score;
-        if (!is_null($postData) && $question->correct === $postData) {
-            $scoreCorrect += $question->score;
-        }
-    }
-}
-
-/**
- * Classe CheckboxQuestionHandler
- * Gestionnaire de question pour les questions de type checkbox.
- */
-class CheckboxQuestionHandler extends QuestionHandler {
-    public function display(Question $question) {
-        echo $question->label . "<br>";
-        $i = 0;
-        foreach ($question->choices as $choice) {
-            $i += 1;
-            echo "<input type='checkbox' name='" . $question->uuid . "[]' value='" . $choice["value"] . "' id='" . $question->uuid . "-$i'>";
-            echo "<label for='" . $question->uuid . "-$i'>" . $choice["text"] . "</label>";
-        }
-    }
-
-    public function evaluate(Question $question, $postData, &$scoreTotal, &$scoreCorrect) {
-        $scoreTotal += $question->score;
-
-        if (!is_null($postData)) {
-            sort($postData); // Assurez-vous que les réponses sélectionnées sont triées
-
-            $diff1 = array_diff($question->correct, $postData);
-            $diff2 = array_diff($postData, $question->correct);
-
-            if (count($diff1) == 0 && count($diff2) == 0) {
-                $scoreCorrect += $question->score;
-            }
         }
     }
 }
