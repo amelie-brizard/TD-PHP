@@ -1,0 +1,74 @@
+[
+    {
+        "uuid": "8030a37e-947b-11ee-b9d1-0242ac120002",
+        "type": "radio",
+        "label": "Le label de la question 1.",
+        "choices": [
+            "Answer 1",
+            "Answer 2",
+            "Answer 3"
+        ],
+        "correct": "Answer 2",
+        "score": 10
+    },
+    {
+        "uuid": "8d7f7078-947b-11ee-b9d1-0242ac120002",
+        "type": "radio",
+        "label": "Le label de la question 2.",
+        "choices": [
+            "Answer 1",
+            "Answer 2",
+            "Answer 3"
+        ],
+        "correct": "Answer 3",
+        "score": 5
+    },
+    {
+        "uuid": "ultime",
+        "type": "text",
+        "label": "Quelle est la réponse ultime?",
+        "correct": "42",
+        "score": 1
+    },
+    {
+        "uuid": "cheval",
+        "type": "radio",
+        "label": "Quelle est la couleur du cheval blanc d'Henri IV?",
+        "choices": [
+            "bleu",
+            "blanc",
+            "rouge"
+        ],
+        "correct": "blanc",
+        "score": 2
+    },
+    {
+        "uuid": "drapeau",
+        "type": "checkbox",
+        "label": "Quelles sont les couleurs du drapeau français ?",
+        "choices": [
+            {
+                "text": "Bleu",
+                "value": "bleu"
+            },
+            {
+                "text": "Blanc",
+                "value": "blanc"
+            },
+            {
+                "text": "Vert",
+                "value": "vert"
+            },
+            {
+                "text": "Jaune",
+                "value": "jaune"
+            },
+            {
+                "text": "Rouge",
+                "value": "rouge"
+            }
+        ],
+        "correct": ["bleu", "blanc", "rouge"],
+        "score": 3
+    }
+]
