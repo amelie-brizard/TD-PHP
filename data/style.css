@@ -1,0 +1,31 @@
+body {
+    font-family: Lato;
+    text-align: center;
+}
+
+ol {
+    list-style-type: upper-roman;
+    margin: auto;
+    text-align: left;
+    width: 30em;
+}
+
+ol li {
+    font-weight: bolder;
+    font-size: 1.3em;
+    margin-bottom: 1em;
+}
+
+input,
+label {
+    font-weight: normal;
+    font-size: medium;
+}
+
+header {
+    height: 8em;
+}
+
+header h1 {
+    margin: auto;
+}
