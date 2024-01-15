@@ -5,6 +5,6 @@
   <body>
     <!-- redirige vers quiz.php -->
     <a href="quiz.php">quiz</a>
-    <a href = "Question.php"> Question </a>
+    <a href="question.php">Question</a>
   </body>
 </html>

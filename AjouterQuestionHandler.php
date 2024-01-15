@@ -1,47 +1,49 @@
 <?php
 
+declare(strict_types=1);
+
+require_once 'Question.php';
+require_once 'Request.php';
+
 class AjouterQuestionHandler {
+    public function handleAjoutQuestion(Request $request): ?string {
+        $uuid = $request->get('uuid');
+        $type = $request->get('type');
+        $label = $request->get('label');
+        $correct = $request->get('correct');
+        $choices = $request->get('choices') ?? [];
+        $score = (int)$request->get('score');
 
-    public function handleAjoutQuestion($postData) {
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($postData['ajouter_question'])) {
-            // Récupérer les données du formulaire
-            $uuid = $postData['uuid'];
-            $type = $postData['type'];
-            $label = $postData['label'];
-            $choices = isset($postData['choices']) ? $postData['choices'] : null;
-            $correct = isset($postData['correct']) ? $postData['correct'] : null;
+        // Vous pouvez ajouter une validation supplémentaire ici si nécessaire
 
-            // Créer une nouvelle instance de Question
-            $nouvelleQuestion = new Question($uuid, $type, $label, $choices, $correct);
+        $newQuestion = new Question($uuid, $type, $label, $choices, $correct, $score);
 
-            // Ajouter la nouvelle question au fichier JSON
-            $this->ajouterQuestionAuJSON($nouvelleQuestion);
-            
-            return "Question ajoutée avec succès!";
-        }
+        // Ajouter la nouvelle question à votre stockage de données (par exemple, fichier JSON)
+        $this->ajouterQuestionDansJSON($newQuestion);
 
-        return null;
+        return "Question ajoutée avec succès.";
     }
 
-    private function ajouterQuestionAuJSON(Question $question) {
-        // Charger le contenu existant du fichier JSON
+    private function ajouterQuestionDansJSON(Question $question): void {
+        // Charger les questions existantes depuis le fichier JSON
         $jsonData = file_get_contents('data/model.json');
         $questionsData = json_decode($jsonData, true);
 
-        // Ajouter la nouvelle question au tableau existant
+        // Ajouter la nouvelle question
         $questionsData[] = [
             'uuid' => $question->uuid,
             'type' => $question->type,
             'label' => $question->label,
-            'choices' => $question->choices,
             'correct' => $question->correct,
+            'choices' => $question->choices,
+            'score' => $question->score,
         ];
 
-        // Convertir le tableau mis à jour en JSON
-        $updatedJsonData = json_encode($questionsData, JSON_PRETTY_PRINT);
+        // Convertir le tableau en format JSON
+        $newJsonData = json_encode($questionsData, JSON_PRETTY_PRINT);
 
-        // Écrire le JSON mis à jour dans le fichier
-        file_put_contents('data/model.json', $updatedJsonData);
+        // Écrire les données dans le fichier JSON
+        file_put_contents('data/model.json', $newJsonData);
     }
 }
-?>
+

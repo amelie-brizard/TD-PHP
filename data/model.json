@@ -26,7 +26,7 @@
     {
         "uuid": "ultime",
         "type": "text",
-        "label": "Quelle est la réponse ultime?",
+        "label": "Quelle est la r\u00e9ponse ultime?",
         "correct": "42",
         "score": 1
     },
@@ -45,30 +45,19 @@
     {
         "uuid": "drapeau",
         "type": "checkbox",
-        "label": "Quelles sont les couleurs du drapeau français ?",
+        "label": "Quelles sont les couleurs du drapeau fran\u00e7ais ?",
         "choices": [
-            {
-                "text": "Bleu",
-                "value": "bleu"
-            },
-            {
-                "text": "Blanc",
-                "value": "blanc"
-            },
-            {
-                "text": "Vert",
-                "value": "vert"
-            },
-            {
-                "text": "Jaune",
-                "value": "jaune"
-            },
-            {
-                "text": "Rouge",
-                "value": "rouge"
-            }
+            "bleu",
+            "blanc",
+            "jaune",
+            "rouge",
+            "vert"
         ],
-        "correct": ["bleu", "blanc", "rouge"],
+        "correct": [
+            "bleu",
+            "blanc",
+            "rouge"
+        ],
         "score": 3
     }
 ]
