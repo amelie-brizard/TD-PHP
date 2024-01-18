@@ -1,8 +1,9 @@
 <?php
-/**
- * Classe TextQuestionHandler
- * Gestionnaire de question pour les questions de type texte.
- */
+
+declare(strict_types=1);
+
+require_once 'QuestionHandler.php';
+
 class TextQuestionHandler extends QuestionHandler {
     public function display(Question $question) {
         echo $question->label . "<br><input type='text' name='" . $question->uuid . "'><br>";
@@ -15,4 +16,3 @@ class TextQuestionHandler extends QuestionHandler {
         }
     }
 }
-?>
