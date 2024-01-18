@@ -10,6 +10,27 @@ require_once 'TextQuestionHandler.php';
 require_once 'RadioQuestionHandler.php';
 require_once 'CheckboxQuestionHandler.php';
 
+echo <<< EOL
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Quiz</title>
+    <link rel='stylesheet' href='css/quiz.css'>
+</head>
+<body>
+<header>
+<nav> 
+<ul>
+<li><a href='index.php'>Acceuil</a></li>
+<li><a href='question.php'>Ajouter des questions</a></li>
+<li><a href='quiz.php'>Quiz</a></li>
+</ul>
+</nav>
+</header>
+<main>
+EOL;
+
 $dataLoader = new DataLoader('data/model.json');
 $questionsData = $dataLoader->getData();
 
@@ -43,8 +64,16 @@ foreach ($questionsData as $data) {
     $quiz->addQuestion($question, $handler);
 }
 
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $quiz->evaluate($_POST);
 } else {
     $quiz->displayForm();
 }
+
+echo <<< EOL
+</main>
+</body>
+</html>
+EOL;

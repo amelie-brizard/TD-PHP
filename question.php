@@ -12,6 +12,28 @@ $questionsData = $dataLoader->getData();
 // Utilisez la classe Request au lieu de $_POST
 $request = new Request($_POST);
 
+echo <<< EOL
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Question</title>
+    <link rel='stylesheet' href='css/question.css'>
+</head>
+<body>
+<header>
+<nav> 
+<ul>
+<li><a href='index.php'>Acceuil</a></li>
+<li><a href='question.php'>Ajouter des questions</a></li>
+<li><a href='quiz.php'>Quiz</a></li>
+</ul>
+</nav>
+</header>
+<main>
+EOL;
+
+
 if ($request->get('ajouter_question')) {
     $ajouterQuestionHandler = new AjouterQuestionHandler();
     $message = $ajouterQuestionHandler->handleAjoutQuestion($request);
@@ -95,8 +117,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['type'])) {
     
     elseif ($type == 'radio') {
         echo <<< EOL
-<label for='correct'>Bonne réponse:</label>";
-<input type='text' name='correct' required><br>";
+<label for='correct'>Bonne réponse:</label>
+<input type='text' name='correct' required><br>
 <label for='choices'>Choix:</label>
 <div id='choices-container'>
 <input type='text' name='choices[]' required><br>
@@ -134,6 +156,13 @@ echo <<< EOL
 <h3>Données POST :</h3>
 <pre>
 EOL;
+
+echo <<< EQL
+</main>
+</body>
+</html>
+EQL;
+
 print_r($_POST);
 echo "</pre>";
 ?>
