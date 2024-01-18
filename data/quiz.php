@@ -16,22 +16,22 @@ echo <<< EOL
 <head>
     <meta charset='UTF-8'>
     <title>Quiz</title>
-    <link rel='stylesheet' href='css/quiz.css'>
+    <link rel='stylesheet' href='../css/quiz.css'>
 </head>
 <body>
 <header>
 <nav> 
 <ul>
-<li><a href='index.php'>Acceuil</a></li>
-<li><a href='question.php'>Ajouter des questions</a></li>
-<li><a href='quiz.php'>Quiz</a></li>
+<li><a href='../index.php'>Acceuil</a></li>
+<li><a href='./question.php'>Ajouter des questions</a></li>
+<li><a href='./quiz.php'>Quiz</a></li>
 </ul>
 </nav>
 </header>
 <main>
 EOL;
 
-$dataLoader = new DataLoader('data/model.json');
+$dataLoader = new DataLoader('../json/model.json');
 $questionsData = $dataLoader->getData();
 
 $quiz = new Quiz();

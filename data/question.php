@@ -6,7 +6,7 @@ require_once 'Request.php';
 require_once 'AjouterQuestionHandler.php';
 require_once 'DataLoader.php';
 
-$dataLoader = new DataLoader('data/model.json');
+$dataLoader = new DataLoader('../json/model.json');
 $questionsData = $dataLoader->getData();
 
 // Utilisez la classe Request au lieu de $_POST
@@ -18,15 +18,15 @@ echo <<< EOL
 <head>
     <meta charset='UTF-8'>
     <title>Question</title>
-    <link rel='stylesheet' href='css/question.css'>
+    <link rel='stylesheet' href='../css/question.css'>
 </head>
 <body>
 <header>
 <nav> 
 <ul>
-<li><a href='index.php'>Acceuil</a></li>
-<li><a href='question.php'>Ajouter des questions</a></li>
-<li><a href='quiz.php'>Quiz</a></li>
+<li><a href='../index.php'>Acceuil</a></li>
+<li><a href='./question.php'>Ajouter des questions</a></li>
+<li><a href='./quiz.php'>Quiz</a></li>
 </ul>
 </nav>
 </header>
