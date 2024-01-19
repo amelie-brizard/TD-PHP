@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-namespace classe;
-
-use classe\Question;
-use classe\Request;
+require_once('Question.php');
+require_once('Request.php');
 
 class AjouterQuestionHandler {
     public function handleAjoutQuestion(Request $request): ?string {

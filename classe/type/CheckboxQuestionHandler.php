@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace classe\type;
-
-use classe\type\QuestionHandler;
+require_once('QuestionHandler.php');
+require_once('../Question.php');
 
 class CheckboxQuestionHandler extends QuestionHandler {
     public function display(Question $question) {

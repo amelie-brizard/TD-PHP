@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace classe\type;
-
-use classe\type\QuestionHandler;
+require_once('QuestionHandler.php');
 
 class TextQuestionHandler extends QuestionHandler {
     public function display(Question $question) {

@@ -2,13 +2,11 @@
 
 declare(strict_types=1);
 
-namespace classe;
-
-use classe\Question;
-use classe\type\QuestionHandler;
-use classe\type\TextQuestionHandler;
-use classe\type\RadioQuestionHandler;
-use classe\type\CheckboxQuestionHandler;
+require_once('Question.php');
+require_once('type/QuestionHandler.php');
+require_once('type/TextQuestionHandler.php');
+require_once('type/RadioQuestionHandler.php');
+require_once('type/CheckboxQuestionHandler.php');
 
 class Quiz {
     private $questions = [];

@@ -2,15 +2,13 @@
 
 declare(strict_types=1);
 
-namespace classe;
-
-use classe\data\DataLoader;
-use classe\Question;
-use classe\Quiz;
-use classe\type\QuestionHandler;
-use classe\type\TextQuestionHandler;
-use classe\type\RadioQuestionHandler;
-use classe\type\CheckboxQuestionHandler;
+require_once('../data/DataLoader.php');
+require_once('../Question.php');
+require_once('../Quiz.php');
+require_once('../type/QuestionHandler.php');
+require_once('../type/TextQuestionHandler.php');
+require_once('../type/RadioQuestionHandler.php');
+require_once('../type/CheckboxQuestionHandler.php');
 
 echo <<< EOL
 <!DOCTYPE html>

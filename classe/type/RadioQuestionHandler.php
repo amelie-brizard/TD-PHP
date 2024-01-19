@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace classe\type;
+require_once('QuestionHandler.php');
 
-use classe\type\QuestionHandler;
 
 class RadioQuestionHandler extends QuestionHandler {
     public function display(Question $question) {

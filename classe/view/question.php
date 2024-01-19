@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace classe;
+require_once('../Request.php');
 
-use classe\Request;
-use classe\AjouterQuestionHandler;
-use classe\data\DataLoader;
+require_once('../AjouterQuestionHandler.php');
+require_once('../data/DataLoader.php');
 
 $dataLoader = new DataLoader('../json/model.json');
 $questionsData = $dataLoader->getData();
@@ -20,7 +19,7 @@ echo <<< EOL
 <head>
     <meta charset='UTF-8'>
     <title>Question</title>
-    <link rel='stylesheet' href='../css/question.css'>
+    <link rel='stylesheet' href='../../css/question.css'>
 </head>
 <body>
 <header>
