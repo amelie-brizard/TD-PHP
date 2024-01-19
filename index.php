@@ -14,8 +14,8 @@
 
     <section class="content">
         <p>Explorez nos fonctionnalités:</p>
-        <a href="quiz.php" class="button">Commencer le Quiz</a>
-        <a href="question.php" class="button">Ajouter une Question</a>
+        <a href="./classe/view/quiz.php" class="button">Commencer le Quiz</a>
+        <a href="./classe/view/question.php" class="button">Ajouter une Question</a>
     </section>
 
     <section class="information">

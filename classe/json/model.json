@@ -59,5 +59,13 @@
             "rouge"
         ],
         "score": 3
+    },
+    {
+        "uuid": "12345",
+        "type": "text",
+        "label": "question test",
+        "correct": "test",
+        "choices": [],
+        "score": 5
     }
 ]

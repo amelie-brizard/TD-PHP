@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-require_once 'DataLoader.php';
-require_once 'Question.php';
-require_once 'Quiz.php';
-require_once 'QuestionHandler.php';
-require_once 'TextQuestionHandler.php';
-require_once 'RadioQuestionHandler.php';
-require_once 'CheckboxQuestionHandler.php';
+require_once('../data/DataLoader.php');
+require_once('../Question.php');
+require_once('../Quiz.php');
+require_once('../type/QuestionHandler.php');
+require_once('../type/TextQuestionHandler.php');
+require_once('../type/RadioQuestionHandler.php');
+require_once('../type/CheckboxQuestionHandler.php');
 
 echo <<< EOL
 <!DOCTYPE html>
@@ -16,22 +16,22 @@ echo <<< EOL
 <head>
     <meta charset='UTF-8'>
     <title>Quiz</title>
-    <link rel='stylesheet' href='css/quiz.css'>
+    <link rel='stylesheet' href='../../css/quiz.css'>
 </head>
 <body>
 <header>
 <nav> 
 <ul>
-<li><a href='index.php'>Acceuil</a></li>
-<li><a href='question.php'>Ajouter des questions</a></li>
-<li><a href='quiz.php'>Quiz</a></li>
+<li><a href='../../index.php'>Acceuil</a></li>
+<li><a href='./question.php'>Ajouter des questions</a></li>
+<li><a href='./quiz.php'>Quiz</a></li>
 </ul>
 </nav>
 </header>
 <main>
 EOL;
 
-$dataLoader = new DataLoader('data/model.json');
+$dataLoader = new DataLoader('../json/model.json');
 $questionsData = $dataLoader->getData();
 
 $quiz = new Quiz();

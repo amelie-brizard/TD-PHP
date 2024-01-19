@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-require_once 'Question.php';
-require_once 'Request.php';
+require_once('Question.php');
+require_once('Request.php');
 
 class AjouterQuestionHandler {
     public function handleAjoutQuestion(Request $request): ?string {
@@ -26,7 +26,7 @@ class AjouterQuestionHandler {
 
     private function ajouterQuestionDansJSON(Question $question): void {
         // Charger les questions existantes depuis le fichier JSON
-        $jsonData = file_get_contents('data/model.json');
+        $jsonData = file_get_contents('../json/model.json');
         $questionsData = json_decode($jsonData, true);
 
         // Ajouter la nouvelle question
@@ -43,7 +43,7 @@ class AjouterQuestionHandler {
         $newJsonData = json_encode($questionsData, JSON_PRETTY_PRINT);
 
         // Écrire les données dans le fichier JSON
-        file_put_contents('data/model.json', $newJsonData);
+        file_put_contents('../json/model.json', $newJsonData);
     }
 }
 

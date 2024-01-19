@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-require_once 'Question.php';
-require_once 'QuestionHandler.php';
-require_once 'TextQuestionHandler.php';
-require_once 'RadioQuestionHandler.php';
-require_once 'CheckboxQuestionHandler.php';
+require_once('Question.php');
+require_once('type/QuestionHandler.php');
+require_once('type/TextQuestionHandler.php');
+require_once('type/RadioQuestionHandler.php');
+require_once('type/CheckboxQuestionHandler.php');
 
 class Quiz {
     private $questions = [];

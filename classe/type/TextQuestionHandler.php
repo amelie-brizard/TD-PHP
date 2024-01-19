@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once 'QuestionHandler.php';
+require_once('QuestionHandler.php');
 
 class TextQuestionHandler extends QuestionHandler {
     public function display(Question $question) {

@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-require_once 'QuestionHandler.php';
+require_once('QuestionHandler.php');
+
 
 class RadioQuestionHandler extends QuestionHandler {
     public function display(Question $question) {
